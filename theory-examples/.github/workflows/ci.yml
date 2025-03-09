@@ -3,7 +3,7 @@ name: CI tests
 on:
   push:
     branches: [ "main" ]
-  pull_resquest:
+  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -18,11 +18,11 @@ jobs:
     steps:
     - name: Cloning repo
       uses: actions/checkout@v4
-    -name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    -name: Installing dependencies
+    - name: Installing dependencies
       run: npm ci
-    -name: Running tests
+    - name: Running tests
       run: npm test
