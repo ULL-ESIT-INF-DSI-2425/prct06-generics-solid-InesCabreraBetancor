@@ -25,7 +25,7 @@ describe("Streaming Collections", () => {
     });
 
     test("should search movies by title", () => {
-      movieCollection.addItem(new Movie("Inception", 2010, 148, "Sci-Fi"));
+      movieCollection.addItem(new Movie("Star Wars", 2010, 148, "Sci-Fi"));
       movieCollection.addItem(new Movie("Interstellar", 2014, 169, "Sci-Fi"));
 
       const result = movieCollection.searchByTitle("Interstellar");
