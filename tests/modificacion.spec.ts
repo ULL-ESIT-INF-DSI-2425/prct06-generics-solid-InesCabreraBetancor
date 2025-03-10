@@ -34,4 +34,13 @@ describe("Pruebas unitarias para la clase generica", () => {
     const expected = list_number.filter(n => n % 2 === 0);
     expect(expected.toArray()).toStrictEqual([2,4,6,8,10])
   })
+  test("Pruebas reverse number", () => {
+    const lista_nums1 = new GenericArray<number>([1,2,3]);
+    const expected = lista_nums1.reverse();
+    expect(expected.toArray()).toStrictEqual([3,2,1]);
+  })
+  test("", () => {
+    const lista_nums1 = new GenericArray<number>([1,2,3]);
+    //const expect = lista_nums1.forEachGen(lista_nums1, (n3))
+  })
 })

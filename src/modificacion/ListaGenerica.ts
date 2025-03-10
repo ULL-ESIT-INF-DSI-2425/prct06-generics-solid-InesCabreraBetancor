@@ -64,22 +64,51 @@ export class GenericArray<T> {
     }
     return new GenericArray<T>(result);
   }
-
-  map(funcion : (item : T) => T) : GenericArray<T> {
-    for(let i=0; i < this.length(); i++){
-
+  /**
+   * Dada una lista y una función, retorna la lista resultante de aplicar a cada elemento de la lista inicial la función
+   * @param funcion es la funcion por la cual se va a mapear
+   * @returns retorna una nueva lista con el mapeo hecho
+   */
+  map<U>(funcion : (item : T) => U) : GenericArray<U> {
+    const mappedItems: U[] = [];
+    for (let i = 0; i < this.length(); i++) {
+        mappedItems[mappedItems.length] = funcion(this.get(i)!);
     }
-    return this;
+    return new GenericArray<U>(mappedItems);
   }
-  reduce(funcion : (item : T) => T) : GenericArray<T> {
+  /**
+   * 
+   * @param funcion es la funcion para reducir
+   * @returns 
+   */
+  reduce<U>(funcion : (accumulator: U, item: T) => U, value: U) : GenericArray<T> {
 
     return this;
   }
+  /**
+   * Metodo que permite darle la vuelta a una lista
+   * @returns retorna la lista a la inversa
+   */
   reverse() : GenericArray<T> {
     let result : T[] = [];
-    /*for (let i = this.length(); i <= 0; i--){
-      result = 
-    }*/
+    let pos = 0;
+    for (let i = this.length() - 1; i >= 0; i--){
+      result[pos] = this.get(i);
+      pos++;
+    }
     return new GenericArray<T>(result);
+  }
+  /**
+   * Dada una lista y una función, permite iterar en los elementos de la lista 
+   * e invocar la función con cada uno de ellos.
+   * @param lista Lista por la operar
+   * @param funcion funcion que invocamos por cada elemento
+   * @returns retorn la propia lista con la funcion aplicada
+   */
+  forEachGen(funcion : (items : T) => T) : GenericArray<T> {
+    for (let i = 0; i < this.length(); i++) {
+      funcion(this.get(i))
+    }
+    return this;
   }
 }
