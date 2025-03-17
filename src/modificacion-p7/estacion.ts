@@ -1,4 +1,4 @@
-import * as Ob from './tools';
+import * as Ob from './tools.js';
 
 export class EstacionMeteorologica implements Ob.Observable {
   private observers : Ob.Observer[] = [];
